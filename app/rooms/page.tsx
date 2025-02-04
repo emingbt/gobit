@@ -5,6 +5,7 @@ import { Plus, Users, Tent, Globe2 } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { RoomModal } from "@/components/roomModal"
+import Link from "next/link"
 
 const myRooms = [
   {
@@ -104,40 +105,44 @@ export default function Rooms() {
           </Card>
 
           {/* General Chat Card */}
-          <Card className="p-6 bg-primary hover:bg-secondary transition-colors cursor-pointer relative overflow-hidden">
-            <div className="flex flex-col space-y-4">
-              <div className="flex items-center space-x-2 text-gray-400">
-                <Users className="w-6 h-6" />
-                <span className="text-lg">General</span>
+          <Link href="/room/1">
+            <Card className="w-full h-full p-6 bg-primary hover:bg-secondary transition-colors cursor-pointer relative overflow-hidden">
+              <div className="flex flex-col space-y-4">
+                <div className="flex items-center space-x-2 text-gray-400">
+                  <Users className="w-6 h-6" />
+                  <span className="text-lg">General</span>
+                </div>
+                <div className="flex -space-x-2">
+                  <Avatar className="border-2 border-gray-900">
+                    <AvatarImage src="/placeholder.svg?height=32&width=32" />
+                    <AvatarFallback>U1</AvatarFallback>
+                  </Avatar>
+                  <Avatar className="border-2 border-gray-900">
+                    <AvatarImage src="/placeholder.svg?height=32&width=32" />
+                    <AvatarFallback>U2</AvatarFallback>
+                  </Avatar>
+                  <Avatar className="border-2 border-gray-900">
+                    <AvatarImage src="/placeholder.svg?height=32&width=32" />
+                    <AvatarFallback>U3</AvatarFallback>
+                  </Avatar>
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gray-800 text-sm text-gray-400 border-2 border-gray-900">
+                    +5
+                  </span>
+                </div>
               </div>
-              <div className="flex -space-x-2">
-                <Avatar className="border-2 border-gray-900">
-                  <AvatarImage src="/placeholder.svg?height=32&width=32" />
-                  <AvatarFallback>U1</AvatarFallback>
-                </Avatar>
-                <Avatar className="border-2 border-gray-900">
-                  <AvatarImage src="/placeholder.svg?height=32&width=32" />
-                  <AvatarFallback>U2</AvatarFallback>
-                </Avatar>
-                <Avatar className="border-2 border-gray-900">
-                  <AvatarImage src="/placeholder.svg?height=32&width=32" />
-                  <AvatarFallback>U3</AvatarFallback>
-                </Avatar>
-                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gray-800 text-sm text-gray-400 border-2 border-gray-900">
-                  +5
-                </span>
-              </div>
-            </div>
-          </Card>
+            </Card>
+          </Link>
 
           {
             myRooms.map((room) => (
-              <Card key={room.id} className="p-6 bg-card hover:bg-secondary transition-colors cursor-pointer">
-                <div className="flex items-center space-x-2 text-gray-400">
-                  <span className="text-xl">{room.icon}</span>
-                  <span className="text-lg">{room.name}</span>
-                </div>
-              </Card>
+              <Link key={room.id} href={`/room/${room.id}`}>
+                <Card key={room.id} className="w-full h-full p-6 bg-card hover:bg-secondary transition-colors cursor-pointer">
+                  <div className="flex items-center space-x-2 text-gray-400">
+                    <span className="text-xl">{room.icon}</span>
+                    <span className="text-lg">{room.name}</span>
+                  </div>
+                </Card>
+              </Link>
             ))
           }
         </div>
