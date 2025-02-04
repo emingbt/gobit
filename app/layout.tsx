@@ -1,3 +1,4 @@
+import Footer from "@/components/footer"
 import "../styles/global.css"
 import { Inter } from "next/font/google"
 import type React from "react" // Import React
@@ -11,7 +12,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }
