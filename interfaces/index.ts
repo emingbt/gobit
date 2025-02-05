@@ -15,5 +15,6 @@ export interface Member {
 export interface VoiceCallMember extends Member {
   volume: number
   isSpeaking: boolean
+  isMuted: boolean
   showVolumeSlider: boolean
 }

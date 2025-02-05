@@ -62,7 +62,8 @@ const rooms = [
         name: "John Doe",
         online: true,
         volume: 100,
-        isSpeaking: false,
+        isSpeaking: true,
+        isMuted: false,
         showVolumeSlider: false,
       },
       {
@@ -70,7 +71,8 @@ const rooms = [
         name: "Jane Doe",
         online: true,
         volume: 100,
-        isSpeaking: false,
+        isSpeaking: true,
+        isMuted: false,
         showVolumeSlider: false,
       },
       {
@@ -79,6 +81,7 @@ const rooms = [
         online: false,
         volume: 100,
         isSpeaking: false,
+        isMuted: true,
         showVolumeSlider: false,
       },
     ]
@@ -126,6 +129,7 @@ const rooms = [
         online: true,
         volume: 100,
         isSpeaking: false,
+        isMuted: false,
         showVolumeSlider: false,
       },
       {
@@ -134,6 +138,7 @@ const rooms = [
         online: true,
         volume: 100,
         isSpeaking: false,
+        isMuted: false,
         showVolumeSlider: false,
       },
       {
@@ -142,6 +147,7 @@ const rooms = [
         online: false,
         volume: 100,
         isSpeaking: false,
+        isMuted: false,
         showVolumeSlider: false,
       },
       {
@@ -150,6 +156,7 @@ const rooms = [
         online: true,
         volume: 100,
         isSpeaking: false,
+        isMuted: false,
         showVolumeSlider: false,
       },
       {
@@ -158,6 +165,7 @@ const rooms = [
         online: false,
         volume: 100,
         isSpeaking: false,
+        isMuted: false,
         showVolumeSlider: false,
       },
       {
@@ -166,6 +174,7 @@ const rooms = [
         online: true,
         volume: 100,
         isSpeaking: false,
+        isMuted: false,
         showVolumeSlider: false,
       },
       {
@@ -174,6 +183,7 @@ const rooms = [
         online: true,
         volume: 100,
         isSpeaking: false,
+        isMuted: false,
         showVolumeSlider: false,
       },
       {
@@ -182,6 +192,7 @@ const rooms = [
         online: true,
         volume: 100,
         isSpeaking: false,
+        isMuted: false,
         showVolumeSlider: false,
       },
       {
@@ -190,6 +201,7 @@ const rooms = [
         online: true,
         volume: 100,
         isSpeaking: false,
+        isMuted: false,
         showVolumeSlider: false,
       },
       {
@@ -198,6 +210,7 @@ const rooms = [
         online: true,
         volume: 100,
         isSpeaking: false,
+        isMuted: false,
         showVolumeSlider: false,
       },
       {
@@ -206,6 +219,7 @@ const rooms = [
         online: true,
         volume: 100,
         isSpeaking: false,
+        isMuted: false,
         showVolumeSlider: false,
       },
       {
@@ -214,6 +228,7 @@ const rooms = [
         online: true,
         volume: 100,
         isSpeaking: false,
+        isMuted: false,
         showVolumeSlider: false,
       },
       {
@@ -222,6 +237,7 @@ const rooms = [
         online: true,
         volume: 100,
         isSpeaking: false,
+        isMuted: false,
         showVolumeSlider: false,
       },
       {
@@ -230,6 +246,7 @@ const rooms = [
         online: true,
         volume: 100,
         isSpeaking: false,
+        isMuted: false,
         showVolumeSlider: false,
       },
       {
@@ -238,6 +255,7 @@ const rooms = [
         online: true,
         volume: 100,
         isSpeaking: false,
+        isMuted: false,
         showVolumeSlider: false,
       },
       {
@@ -246,78 +264,7 @@ const rooms = [
         online: true,
         volume: 100,
         isSpeaking: false,
-        showVolumeSlider: false,
-      },
-      {
-        id: 17,
-        name: "Nancy Doe",
-        online: true,
-        volume: 100,
-        isSpeaking: false,
-        showVolumeSlider: false,
-      },
-      {
-        id: 18,
-        name: "Oliver Doe",
-        online: true,
-        volume: 100,
-        isSpeaking: false,
-        showVolumeSlider: false,
-      },
-      {
-        id: 19,
-        name: "Peter Doe",
-        online: true,
-        volume: 100,
-        isSpeaking: false,
-        showVolumeSlider: false,
-      },
-      {
-        id: 20,
-        name: "Quinn Doe",
-        online: true,
-        volume: 100,
-        isSpeaking: false,
-        showVolumeSlider: false,
-      },
-      {
-        id: 21,
-        name: "Rose Doe",
-        online: true,
-        volume: 100,
-        isSpeaking: false,
-        showVolumeSlider: false,
-      },
-      {
-        id: 22,
-        name: "Sam Doe",
-        online: true,
-        volume: 100,
-        isSpeaking: false,
-        showVolumeSlider: false,
-      },
-      {
-        id: 23,
-        name: "Tom Doe",
-        online: true,
-        volume: 100,
-        isSpeaking: false,
-        showVolumeSlider: false,
-      },
-      {
-        id: 24,
-        name: "Ursula Doe",
-        online: true,
-        volume: 100,
-        isSpeaking: false,
-        showVolumeSlider: false,
-      },
-      {
-        id: 25,
-        name: "Violet Doe",
-        online: true,
-        volume: 100,
-        isSpeaking: false,
+        isMuted: false,
         showVolumeSlider: false,
       },
     ]
@@ -342,10 +289,7 @@ export default function RoomPage() {
     setRoom(room)
     setVoiceCallMembers(
       room?.membersInCall?.map((member) => ({
-        ...member,
-        volume: 100,
-        isSpeaking: false,
-        showVolumeSlider: false,
+        ...member
       })) || [],
     )
   }, [roomId])
@@ -374,6 +318,7 @@ export default function RoomPage() {
               gobit
             </span>
             <span className="text-gray-400">|</span>
+            <span className="text-gray-400">{room?.icon}</span>
             <span className="text-gray-400">{room?.name}</span>
           </div>
           <div className="flex items-center space-x-2">
@@ -411,26 +356,29 @@ export default function RoomPage() {
                   <div key={member.id} className="flex flex-col">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
-                        <Avatar>
+                        <Avatar className={isInCall && member.isSpeaking ? "border-2 border-green-500" : ""}>
                           <AvatarImage src="/placeholder.svg?height=32&width=32" />
                           <AvatarFallback>{member.name[0]}</AvatarFallback>
                         </Avatar>
                         <span>{member.name}</span>
-                        {member.isSpeaking && <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />}
+                        {member.isMuted && <MicOff className="w-4 h-4 text-gray-400" />}
                       </div>
-                      <Button size="sm" variant="ghost" onClick={() => toggleVolumeSlider(member.id)}>
-                        {member.showVolumeSlider ? (
-                          <ChevronUp className="w-4 h-4" />
-                        ) : (
-                          <ChevronDown className="w-4 h-4" />
-                        )}
-                      </Button>
+                      {
+                        isInCall &&
+                        <Button size="sm" variant="ghost" onClick={() => toggleVolumeSlider(member.id)}>
+                          {member.showVolumeSlider ? (
+                            <ChevronUp className="w-4 h-4" />
+                          ) : (
+                            <ChevronDown className="w-4 h-4" />
+                          )}
+                        </Button>
+                      }
                     </div>
                     {member.showVolumeSlider && (
                       <div className="my-4">
                         <Slider
                           // change the slider color to bg-gradient-to-r from-orange-500 via-green-500 to-purple-500
-                          className="cursor-pointer"
+                          className="cursor-pointer accent-slate-300"
                           value={[member.volume]}
                           onValueChange={(value) => handleVolumeChange(member.id, value[0])}
                           max={100}
